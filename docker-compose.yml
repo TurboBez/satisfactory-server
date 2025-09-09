@@ -8,16 +8,13 @@ services:
       - '7777:7777/udp'
       - '8888:8888/tcp'
     volumes:
-      - './satisfactory-server:/config'
-    environment:
-      - MAXPLAYERS=4
-      - PGID=1000
-      - PUID=1000
-      - STEAMBETA=false
+      - '/home/djordy/satisfactory-server:/config'
+    env_file:
+      - .env
     restart: unless-stopped
     deploy:
       resources:
         limits:
-          memory: 8G
+          memory: 16G
         reservations:
-          memory: 4G
+          memory: 8G
